@@ -1,0 +1,3 @@
+with open('movie_score.txt', 'r', encoding='utf-8') as file:
+     d = file.read()
+data = eval(d)
