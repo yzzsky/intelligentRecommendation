@@ -1,0 +1,14 @@
+score_matrix = cal_matscore(mdata,mcors)
+for i in range(10):
+    user = input(str(i)+'.'+'please input the name of user:')
+    print(recommend(mdata,score_matrix,user,2))
+
+user = 'Toby' # 检验
+
+while True:
+    user = input('please input the name of user:')
+    if user == 'Stop':
+        print('Stop recommend!')
+        break
+    else:
+        print(recommend(mdata,score_matrix,user,2))
