@@ -1,0 +1,5 @@
+data = pd.DataFrame(data)
+# 将数据中的空值nan变为0
+data = data.fillna(0)
+# 转置，每一列代表一个电影
+mdata = data.T
