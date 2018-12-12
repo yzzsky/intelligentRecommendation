@@ -1,0 +1,21 @@
+# score_matrix:不同用户的电影得分矩阵
+def cal_matscore(matrix,mcors):
+    score_matrix = pd.DataFrame(np.zeros(matrix.shape) , columns=matrix.columns, index=matrix.index)
+    for mitem in score_matrix.columns:
+        for muser in score_matrix.index:
+            score_matrix[mitem][muser]  = cal_score(matrix,mcors,mitem,muser)
+    return score_matrix
+
+# give recommendations: depending on the score matrix
+# matrix: 矩阵:用户-电影矩阵
+# score_matrix:不同用户的电影得分矩阵
+# n: 推荐系数
+def recommend(matrix,score_matrix,user,n):
+    user_ratings = matrix.ix[user]
+    not_rated_item = user_ratings[user_ratings==0]
+    recom_items = {}
+    for i in not_rated_item.index:
+        recom_items[i] = score_matrix[i][user]
+    recom_items = pd.Series(recom_items)
+    recom_items = recom_items.sort_values(ascending=False)
+    return recom_items[:n]
