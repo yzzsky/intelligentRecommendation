@@ -1,0 +1,3 @@
+mcors = np.corrcoef(mdata, rowvar=0)
+mcors = 0.5+mcors*0.5
+mcors = pd.DataFrame(mcors, columns=mdata.columns, index=mdata.columns)
