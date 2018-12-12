@@ -1,0 +1,18 @@
+def cal_score(matrix,mcors,item,user):
+    totscore = 0
+    totsims = 0
+    score = 0
+    if pd.isnull(matrix[item][user]) or matrix[item][user]==0:
+        for mitem in matrix.columns:
+            if matrix[mitem][user]==0:
+                continue
+            else:
+                totscore += matrix[mitem][user]*mcors[item][mitem]
+                totsims += mcors[item][mitem]
+        score = totscore/totsims
+    else:  
+        score = matrix[item][user]
+    return score
+
+cal_score(mdata,mcors,'Just My Luck','Jack Matthews')
+cal_score(mdata,mcors,'Just My Luck','Toby')
